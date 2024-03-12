@@ -118,34 +118,38 @@ function sendGameData() {
     id2: userId2,
     score1: sessionCounts[0].slaps,
     tc1: sessionCounts[0].chars,
-	cheated1: sessionCounts[0].cheated ? 1 : 0,
-	score2: sessionCounts[1].slaps,
-	tc2: sessionCounts[1].chars,
-	cheated2: sessionCounts[1].cheated ? 1 : 0,
+    score2: sessionCounts[1].slaps,
+    tc2: sessionCounts[1].chars,
     score3: sessionCounts[2].slaps,
-	tc3: sessionCounts[2].chars,
-	cheated3: sessionCounts[2].cheated ? 1 : 0,
-
+    tc3: sessionCounts[2].chars,
+    cheated1: sessionCounts[0].cheated ? 1 : 0,
+    cheated2: sessionCounts[1].cheated ? 1 : 0,
+    cheated3: sessionCounts[2].cheated ? 1 : 0,
   };
-	
-	
-	
-	
-  fetch('https://script.google.com/macros/s/AKfycbylQAqUCfzLpt_1Glnql4npDNVUXHv6GNtq3UeHqXmiaup6YWzCy0bMcLCzLdWPr92C/exec', {
-    method: 'POST',
-    mode: 'no-cors',
-    cache: 'no-cache',
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer',
-    body: JSON.stringify(data),
-  })
-  .then(response => console.log('Success:', response))
-  .catch(error => console.error('Error:', error));
+
+  // ランダムな遅延を設定（0秒から10秒）
+  const delay = Math.random() * 10000; // 10000ms = 10s
+
+  setTimeout(() => {
+    fetch('https://script.google.com/macros/s/AKfycbylQAqUCfzLpt_1Glnql4npDNVUXHv6GNtq3UeHqXmiaup6YWzCy0bMcLCzLdWPr92C/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data),
+    })
+    .then(response => console.log('Success:', response))
+    .catch(error => console.error('Error:', error));
+  }, delay);
 }
+
+
+
 
 
 window.onload = function() {
