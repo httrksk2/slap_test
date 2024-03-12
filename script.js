@@ -1,6 +1,18 @@
 let sessionCount = 0;
 let sessionCounts = [{ slaps: 0, chars: 0, cheated: false }, { slaps: 0, chars: 0, cheated: false }, { slaps: 0, chars: 0, cheated: false }];
 
+let userId1, userId2;
+
+function confirmId() {
+  userId1 = document.getElementById('userId1').value;
+  userId2 = document.getElementById('userId2').value;
+  document.getElementById('userId1').style.display = 'none';
+  document.getElementById('userId2').style.display = 'none';
+  document.querySelector('button[onclick="confirmId()"]').style.display = 'none';
+  document.getElementById('startButton').style.display = 'block';
+}
+
+
 document.getElementById('startButton').addEventListener('click', function() {
     this.style.display = 'none';
     startSession();
@@ -52,7 +64,7 @@ function startTypingSession() {
         }
     });
 
-    countdown(60, endTypingSession);
+    countdown(10, endTypingSession);  //タスク入力時間！
 }
 
 function endTypingSession() {
@@ -78,18 +90,19 @@ function updateResult() {
 }
 
 function updateSessionRecords() {
-    let recordText = 'Session Records:<br>';
+    let recordText = `Session Records (ID: ${userId1} and ${userId2}):<br>`;
     sessionCounts.forEach((count, index) => {
         let sessionLabel = count.cheated ? `Session ${index + 1}*: ` : `Session ${index + 1}: `;
         let record = `${sessionLabel}Number of SLAPs: ${count.slaps} (Total Characters: ${count.chars})`;
-        recordText += `${record};<br>`;
+        recordText += `${record}<br>`;
     });
     document.getElementById('record').innerHTML = recordText;
 }
 
+
 function strategyTime() {
     document.getElementById('strategyTime').innerHTML = "90 sec strategy time for the team.<br>The next session will start as soon as the countdown reaches zero.";
-    countdown(90, startTypingSession);
+    countdown(3, startTypingSession);   //作戦時間！
 }
 
 
@@ -101,15 +114,24 @@ function displayFinalRecord() {
 
 function sendGameData() {
   const data = {
+    id1: userId1,
+    id2: userId2,
     score1: sessionCounts[0].slaps,
     tc1: sessionCounts[0].chars,
-    score2: sessionCounts[1].slaps,
-    tc2: sessionCounts[1].chars,
+	cheated1: sessionCounts[0].cheated ? 1 : 0,
+	score2: sessionCounts[1].slaps,
+	tc2: sessionCounts[1].chars,
+	cheated2: sessionCounts[1].cheated ? 1 : 0,
     score3: sessionCounts[2].slaps,
-    tc3: sessionCounts[2].chars,
-  };
+	tc3: sessionCounts[2].chars,
+	cheated3: sessionCounts[2].cheated ? 1 : 0,
 
-  fetch('https://script.google.com/macros/s/AKfycbxKgY7pLCse2cx4QFIknsbvDDVmlICnYG--QrZkA5p2jjDEm9eU8xG61jJ0pZXFUNs/exec', {
+  };
+	
+	
+	
+	
+  fetch('https://script.google.com/macros/s/AKfycbwrdqNTXKlZ6SLxiIb1vME_cCZ30KHQWMvzTzL6AQq4dR4sAmYk0tR0e156qYH1uSov/exec', {
     method: 'POST',
     mode: 'no-cors',
     cache: 'no-cache',
@@ -124,4 +146,6 @@ function sendGameData() {
   .then(response => console.log('Success:', response))
   .catch(error => console.error('Error:', error));
 }
+
+
 
