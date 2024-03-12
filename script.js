@@ -148,4 +148,7 @@ function sendGameData() {
 }
 
 
+window.onload = function() {
+    document.querySelector('button[onclick="confirmId()"]').addEventListener('click', confirmId);
+};
 
