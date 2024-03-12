@@ -131,7 +131,7 @@ function sendGameData() {
 	
 	
 	
-  fetch('https://script.google.com/macros/s/AKfycbwrdqNTXKlZ6SLxiIb1vME_cCZ30KHQWMvzTzL6AQq4dR4sAmYk0tR0e156qYH1uSov/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbylQAqUCfzLpt_1Glnql4npDNVUXHv6GNtq3UeHqXmiaup6YWzCy0bMcLCzLdWPr92C/exec', {
     method: 'POST',
     mode: 'no-cors',
     cache: 'no-cache',
