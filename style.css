@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #FDFDFD;
+    color: #404040;
+}
+
+#container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#sessionNumber {
+  font-size: 20px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+
+textarea {
+    width: 100%;
+    height: 200px;
+    font-size: 20pt;
+    background-color: #FFFFFF;
+    color: #404040;
+    text-transform: uppercase;
+}
+
+#countdown, #result, #strategyTime {
+    font-size: 2.4em;
+    margin-top: 20px;
+    color: #404040;
+    line-height: 1.3;
+}
+
+#record {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #404040;
+    line-height: 1.3;
+}
+
+#pageTitle {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#strategyTime {
+    font-size: 1.92em;
+    line-height: 1.3;
+}
+
+#copyright {
+    font-size: 0.8em;
+    color: #666;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#textInput {
+    text-transform: uppercase; /* テキストボックスの入力を大文字に変換 */
+}
+
